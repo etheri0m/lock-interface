@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lock Control</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Smart Lock Interface</h1>
+  <input type="email" id="email" placeholder="Email">
+  <input type="password" id="password" placeholder="Password">
+  <button onclick="login()">Login</button>
+  <div id="dashboard" style="display:none;">
+    <p>Welcome! <span id="user"></span></p>
+    <button onclick="unlock()">Unlock Door</button>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
