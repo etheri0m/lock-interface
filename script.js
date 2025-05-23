@@ -1,24 +1,36 @@
 function login() {
-  const email = document.getElementById("email").value.trim();
+  const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
 
-  const user = mockUsers.find(
-    u => u.email === email && u.password === password
-  );
-
+  const user = mockUsers.find(u => u.email === email && u.password === password);
+  
   if (!user) {
     alert("Invalid email or password.");
     return;
   }
 
   document.getElementById("login-section").style.display = "none";
-
+  
   if (user.role === "admin") {
-    document.getElementById("admin-dashboard").style.display = "block";
+    document.getElementById("admin-dashboard").style.display = "flex";
     loadUsers();
   } else {
     document.getElementById("user-dashboard").style.display = "block";
     document.getElementById("user").innerText = email;
+
+    // Simulate assigned locks
+    const locks = ["Closet 1", "Closet 2", "Closet 3"];
+    const lockList = document.getElementById("userLocksList");
+    lockList.innerHTML = "";
+
+    locks.forEach(lockName => {
+      const li = document.createElement("li");
+      li.innerHTML = `
+        <span>${lockName}</span>
+        <button onclick="unlock('${lockName}')">Unlock</button>
+      `;
+      lockList.appendChild(li);
+    });
   }
 }
 
@@ -28,9 +40,9 @@ function logout() {
   document.getElementById("user-dashboard").style.display = "none";
 }
 
-function unlock() {
-  // Implement unlock request
-  alert("Unlock request sent!");
+function unlock(lockName) {
+  alert(`Unlock request sent for: ${lockName}`);
+  // TODO: Send fetch request to backend for specific lock
 }
 const mockUsers = [
   {

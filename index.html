@@ -18,13 +18,30 @@
 
     <!-- USER DASHBOARD -->
     <div id="user-dashboard" style="display: none;">
-      <h2>Welcome, <span id="user"></span></h2>
-      <div class="lock-status">
-        <p>Lock Status: <span id="lockStatus">Locked</span></p>
-        <button onclick="unlock()">Unlock Door</button>
-      </div>
+    <div class="user-info-panel">
+    <h3>User Info</h3>
+    <p>Email: <span id="user"></span></p>
+    <p>Role: <span id="userRole"></span></p>
+    </div>
+
+  <div class="admin-dropdown">
+  <div class="dropdown-header" onclick="toggleDropdown(this)">
+    <h3>Lock Control</h3>
+  </div>
+  <div class="dropdown-content">
+    <ul id="userLocksList"></ul>
+  </div>
+</div>
+
+  <div class="admin-dropdown">
+    <div class="dropdown-header" onclick="toggleDropdown(this)">
+      <h3>Logout</h3>
+    </div>
+    <div class="dropdown-content">
       <button onclick="logout()">Logout</button>
     </div>
+  </div>
+</div>
 
     <!-- ADMIN DASHBOARD -->
     <div id="admin-dashboard" style="display: none;">
