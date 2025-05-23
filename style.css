@@ -1,0 +1,142 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* full viewport height */
+  background-color: #000B15; /* fallback color */
+}
+
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px;
+  gap: 30px;
+
+  width: 90%;
+  max-width: 1000px; 
+  height: auto;
+  min-height: 90vh;
+
+  background: linear-gradient(179.81deg, #000B15 -15.52%, #002F5D 102.58%);
+  border-radius: 60px;
+  color: white;
+
+  box-shadow: inset 10px 10px 30px #000814, inset -10px -10px 30px #003060;
+}
+input, select {
+  padding: 12px 16px;
+  margin: 10px 0;
+  width: 100%;
+  max-width: 400px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+button {
+  padding: 12px 24px;
+  margin: 10px 0;
+  width: 100%;
+  max-width: 200px;
+  font-size: 1rem;
+  background-color: #0066cc;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #004c99;
+}
+
+#dashboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  width: 100%;
+}
+
+.lock-status {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 20px 40px;
+  border-radius: 20px;
+  box-shadow: inset 4px 4px 10px #00142d, inset -4px -4px 10px #004080;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.locks-list {
+  width: 100%;
+  max-width: 400px;
+  text-align: left;
+  color: white;
+}
+
+.locks-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.locks-list li {
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+.admin-dropdown {
+  width: 100%;
+  max-width: 1000px;       /* Wider layout */
+  height: auto;           /* Let content determine height */
+  max-height: 500px;      /* Scroll only if needed */
+  overflow-y: auto;
+  margin: 20px auto;
+  padding: 30px;
+
+  background: #202122;
+  box-shadow: 
+    inset -6px -6px 12px rgba(255, 255, 255, 0.25),
+    inset 6px 6px 12px rgba(0, 0, 0, 0.25);
+  border-radius: 40px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.admin-dropdown h3 {
+  margin-top: 0;
+  text-align: center;
+  font-size: 1.4rem;
+}
+
+.admin-dropdown input,
+.admin-dropdown select,
+.admin-dropdown button {
+  padding: 14px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.admin-dropdown button {
+  background-color: #0066cc;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.admin-dropdown button:hover {
+  background-color: #0052a3;
+}
