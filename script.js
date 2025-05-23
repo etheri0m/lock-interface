@@ -54,3 +54,7 @@ const mockUsers = [
     role: "user"
   }
 ];
+function toggleDropdown(header) {
+  const container = header.parentElement;
+  container.classList.toggle("open");
+}

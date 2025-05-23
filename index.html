@@ -29,7 +29,10 @@
     <!-- ADMIN DASHBOARD -->
     <div id="admin-dashboard" style="display: none;">
   <div class="admin-dropdown" id="register">
+    <div class="dropdown-header" onclick="toggleDropdown(this)">
     <h3>Register User</h3>
+  </div>
+  <div class="dropdown-content">
     <input type="email" id="newEmail" placeholder="User Email" />
     <input type="password" id="newPassword" placeholder="Password" />
     <select id="newRole">
@@ -37,18 +40,27 @@
       <option value="admin">Admin</option>
     </select>
     <button onclick="registerUser()">Register</button>
+    </div>
   </div>
 
   <div class="admin-dropdown" id="manage">
+    <div class="dropdown-header" onclick="toggleDropdown(this)">
     <h3>Manage Users</h3>
+    </div>
+    <div class="dropdown-content">
     <ul id="userList"></ul>
+    </div>
   </div>
 
   <div class="admin-dropdown" id="scan">
+    <div class="dropdown-header" onclick="toggleDropdown(this)">
     <h3>Scan RFID Card</h3>
+    </div>
+    <div class="dropdown-content">
     <p>UID: <span id="scannedUID">None</span></p>
     <p>User: <span id="scannedUser">Not found</span></p>
     <button onclick="assignCard()">Assign Card</button>
+    </div>
   </div>
 </div>
   <script src="script.js"></script>
