@@ -1,85 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lock Control</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Lock Control
+  </title>
+  <link href="style.css" rel="stylesheet"/>
+ </head>
+ <body>
+  <div class="uni-logo" style="display: flex; align-items: center; gap: 10px;">
+   <img alt="FH Kiel Logo" src="assets/fhkiel_logo1-removebg-preview_white.png"/>
+   <span class="uni-title">
+    FH Kiel
+   </span>
+  </div>
   <div class="main-container">
-    <!-- LOGIN SECTION (Always visible first) -->
-    <div id="login-section">
-      <h1>Login</h1>
-      <input type="email" id="email" placeholder="Email" />
-      <input type="password" id="password" placeholder="Password" />
-      <button onclick="login()">Login</button>
-    </div>
-
-    <!-- USER DASHBOARD -->
-    <div id="user-dashboard" style="display: none;">
+   <!-- LOGIN SECTION (Always visible first) -->
+   <div id="login-section">
+    <h1>
+     Login
+    </h1>
+    <input id="email" placeholder="Email" type="email"/>
+    <input id="password" placeholder="Password" type="password"/>
+    <button onclick="login()">
+     Login
+    </button>
+   </div>
+   <!-- USER DASHBOARD -->
+   <div id="user-dashboard" style="display: none;">
     <div class="user-info-panel">
-    <h3>User Info</h3>
-    <p>Email: <span id="user"></span></p>
-    <p>Role: <span id="userRole"></span></p>
+     <h3>
+      User Info
+     </h3>
+     <p>
+      Email:
+      <span id="user">
+      </span>
+     </p>
+     <p>
+      Role:
+      <span id="userRole">
+      </span>
+     </p>
     </div>
-
-  <div class="admin-dropdown">
-  <div class="dropdown-header" onclick="toggleDropdown(this)">
-    <h3>Lock Control</h3>
+    <div class="admin-dropdown">
+     <div class="dropdown-header" onclick="toggleDropdown(this)">
+      <h3>
+       Lock Control
+      </h3>
+     </div>
+     <div class="dropdown-content">
+      <ul id="userLocksList">
+      </ul>
+     </div>
+    </div>
+    <div class="admin-dropdown">
+     <div class="dropdown-header" onclick="toggleDropdown(this)">
+      <h3>
+       Logout
+      </h3>
+     </div>
+     <div class="dropdown-content">
+      <button onclick="logout()">
+       Logout
+      </button>
+     </div>
+    </div>
+   </div>
+   <!-- ADMIN DASHBOARD -->
+   <div id="admin-dashboard" style="display: none;">
+    <div class="admin-dashboard-wrapper">
+     <div class="admin-dropdown">
+      <div class="dropdown-header" onclick="toggleDropdown(this)">
+       <h3>
+        Lock Control
+       </h3>
+      </div>
+      <div class="dropdown-content">
+       <ul id="adminLocksList"></ul>
+      </div>
+     </div>
+     <div class="admin-dropdown" id="register">
+      <div class="dropdown-header" onclick="toggleDropdown(this)">
+       <h3>
+        Register User
+       </h3>
+      </div>
+      <div class="dropdown-content">
+       <input id="newEmail" placeholder="User Email" type="email"/>
+       <input id="newPassword" placeholder="Password" type="password"/>
+       <select id="newRole">
+        <option value="user">
+         User
+        </option>
+        <option value="admin">
+         Admin
+        </option>
+       </select>
+       <button onclick="registerUser()">
+        Register
+       </button>
+      </div>
+     </div>
+     <div class="admin-dropdown" id="manage">
+      <div class="dropdown-header" onclick="toggleDropdown(this)">
+       <h3>
+        Manage Users
+       </h3>
+      </div>
+      <div class="dropdown-content">
+       <ul id="userList">
+       </ul>
+      </div>
+     </div>
+     <div class="admin-dropdown" id="scan">
+      <div class="dropdown-header" onclick="toggleDropdown(this)">
+       <h3>
+        Scan RFID Card
+       </h3>
+      </div>
+      <div class="dropdown-content">
+       <p>
+        UID:
+        <span id="scannedUID">
+         None
+        </span>
+       </p>
+       <p>
+        User:
+        <span id="scannedUser">
+         Not found
+        </span>
+       </p>
+       <button onclick="assignCard()">
+        Assign Card
+       </button>
+      </div>
+     </div>
+     <div class="admin-dropdown">
+      <div class="dropdown-header" onclick="toggleDropdown(this)">
+       <h3>
+        Logout
+       </h3>
+      </div>
+      <div class="dropdown-content">
+       <button onclick="logout()">
+        Logout
+       </button>
+      </div>
+     </div>
+    </div>
+   </div>
+   <script src="script.js">
+   </script>
   </div>
-  <div class="dropdown-content">
-    <ul id="userLocksList"></ul>
-  </div>
-</div>
-
-  <div class="admin-dropdown">
-    <div class="dropdown-header" onclick="toggleDropdown(this)">
-      <h3>Logout</h3>
-    </div>
-    <div class="dropdown-content">
-      <button onclick="logout()">Logout</button>
-    </div>
-  </div>
-</div>
-
-    <!-- ADMIN DASHBOARD -->
-    <div id="admin-dashboard" style="display: none;">
-  <div class="admin-dropdown" id="register">
-    <div class="dropdown-header" onclick="toggleDropdown(this)">
-    <h3>Register User</h3>
-  </div>
-  <div class="dropdown-content">
-    <input type="email" id="newEmail" placeholder="User Email" />
-    <input type="password" id="newPassword" placeholder="Password" />
-    <select id="newRole">
-      <option value="user">User</option>
-      <option value="admin">Admin</option>
-    </select>
-    <button onclick="registerUser()">Register</button>
-    </div>
-  </div>
-
-  <div class="admin-dropdown" id="manage">
-    <div class="dropdown-header" onclick="toggleDropdown(this)">
-    <h3>Manage Users</h3>
-    </div>
-    <div class="dropdown-content">
-    <ul id="userList"></ul>
-    </div>
-  </div>
-
-  <div class="admin-dropdown" id="scan">
-    <div class="dropdown-header" onclick="toggleDropdown(this)">
-    <h3>Scan RFID Card</h3>
-    </div>
-    <div class="dropdown-content">
-    <p>UID: <span id="scannedUID">None</span></p>
-    <p>User: <span id="scannedUser">Not found</span></p>
-    <button onclick="assignCard()">Assign Card</button>
-    </div>
-  </div>
-</div>
-  <script src="script.js"></script>
-</body>
+ </body>
 </html>

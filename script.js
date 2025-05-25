@@ -12,13 +12,45 @@ function login() {
   document.getElementById("login-section").style.display = "none";
   
   if (user.role === "admin") {
-    document.getElementById("admin-dashboard").style.display = "flex";
-    loadUsers();
+  document.getElementById("admin-dashboard").style.display = "flex";
+  loadUsers();
+
+  // Force Lock Control dropdown open
+  const lockControlHeader = Array.from(document.querySelectorAll(".admin-dropdown"))
+    .find(dropdown => dropdown.querySelector("h3")?.innerText.trim() === "Lock Control");
+
+  if (lockControlHeader) {
+    lockControlHeader.classList.add("open");
   } else {
+    console.warn("Lock Control dropdown not found");
+  }
+
+  const adminLockList = document.getElementById("adminLocksList");
+  if (!adminLockList) {
+    console.error("adminLocksList not found in DOM");
+    return;
+  }
+
+  const allLocks = ["Main Door", "Garage", "Back Gate", "Server Room"];
+  adminLockList.innerHTML = ""; 
+
+  allLocks.forEach(lockName => {
+    const li = document.createElement("li");
+    li.innerHTML = `
+      <span>${lockName}</span>
+      <button onclick="unlock('${lockName}')">Unlock</button>
+    `;
+    adminLockList.appendChild(li);
+  });
+
+  console.log("✅ Admin locks rendered.");
+}
+
+   else {
     document.getElementById("user-dashboard").style.display = "block";
     document.getElementById("user").innerText = email;
 
-    // Simulate assigned locks
+    
     const locks = ["Closet 1", "Closet 2", "Closet 3"];
     const lockList = document.getElementById("userLocksList");
     lockList.innerHTML = "";
