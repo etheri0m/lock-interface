@@ -13,7 +13,7 @@ function login() {
   
   if (user.role === "admin") {
   document.getElementById("admin-dashboard").style.display = "flex";
-  loadUsers();
+  
 
   // Force Lock Control dropdown open
   const lockControlHeader = Array.from(document.querySelectorAll(".admin-dropdown"))
@@ -31,7 +31,7 @@ function login() {
     return;
   }
 
-  const allLocks = ["Main Door", "Garage", "Back Gate", "Server Room"];
+  const allLocks = ["Closet 1", "Closet 2", "Closet 3", "Closet 4"];
   adminLockList.innerHTML = ""; 
 
   allLocks.forEach(lockName => {
@@ -42,8 +42,8 @@ function login() {
     `;
     adminLockList.appendChild(li);
   });
-
-  console.log("✅ Admin locks rendered.");
+  loadUsers();
+  console.log(" Admin locks rendered.");
 }
 
    else {
